@@ -39,4 +39,11 @@ public class TodoAppDao {
         paramMap.addValue("detail", detail);
         jdbcTemplate.update("INSERT INTO TODO_APP VALUES(:todoId, :title, :detail)", paramMap);
     }
+
+    public void delete(int deleteId){
+        MapSqlParameterSource paramMap = new MapSqlParameterSource();
+        paramMap.addValue("deleteId", deleteId);
+        jdbcTemplate.update("DELETE FROM TODO_APP WHERE TODO_ID = :deleteId", paramMap);
+
+    }
 }

@@ -19,6 +19,7 @@
                 <th>#</th>
                 <th>Title</th>
                 <th>Detail</th>
+                <th>Delete</th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +28,12 @@
                 <td class="todo-id" th:text="${result['todoId']}"></td>
                 <td class="title" th:text="${result['title']}"></td>
                 <td class="detail" th:text="${result['detail']}"></td>
+                <td>
+                    <form method="GET" action="./delete">
+                        <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
+                        <input class="button" type="submit" value="delete"></input>
+                    </form>
+                </td>
             </tr>
         </tbody>
     </table>

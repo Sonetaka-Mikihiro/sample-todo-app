@@ -15,6 +15,7 @@ public class TodoApp implements Serializable {
     private int todoId;
     private String title;
     private String detail;
+    private int deleteId;
 
     public TodoApp() {
     }
@@ -41,5 +42,13 @@ public class TodoApp implements Serializable {
 
     public void setDetail(String detail) {
         this.detail = detail;
+    }
+
+    public void setDeleteId(int deleteId) {
+        this.deleteId = deleteId;
+    }
+
+    public int getDeleteId() {
+        return deleteId;
     }
 }

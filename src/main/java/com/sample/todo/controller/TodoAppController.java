@@ -42,4 +42,10 @@ public class TodoAppController {
         service.register(todoApp.getTitle(), todoApp.getDetail());
         return "redirect:index";// 登録したらindexに移る
     }
+
+    @RequestMapping(value = "/delete", method = { RequestMethod.GET, RequestMethod.POST })
+    String delete(@ModelAttribute TodoApp todoApp, Model model) {
+        service.delete(todoApp.getDeleteId());
+        return "redirect:index";// resources/index.htmlを指している
+    }
 }
