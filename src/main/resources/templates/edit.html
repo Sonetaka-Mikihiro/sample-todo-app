@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Sample TODO Application</title>
+
+    <link rel="stylesheet" href="css/detail.css" type="text/css" />
+</head>
+
+<body>
+    <h1>Edit Todo</h1>
+
+    <form method="POST" action="./update">
+        <input type="hidden" name="todoId" th:value="${todoId}"></input>
+        <ul>
+            <li>
+                <label for="title">Title</label>
+                <input id="title" type="text" name="title" th:value="${title}"></input>
+            </li>
+            <li>
+                <label for="detail">Detail</label>
+                <textarea id="detail" type="text" name="detail" th:text="${detail}"></textarea>
+            </li>
+            <li><input class="button" type="submit" name="update" value="update"></input></li>
+        </ul>
+    </form>
+</body>
+
+</html>

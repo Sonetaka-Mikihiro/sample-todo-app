@@ -48,4 +48,18 @@ public class TodoAppController {
         service.delete(todoApp.getDeleteId());
         return "redirect:index";// resources/index.htmlを指している
     }
+
+    @RequestMapping(value = "/edit", method = RequestMethod.GET)
+    String edit(@ModelAttribute TodoApp todoApp, Model model) {
+        model.addAttribute("todoId", todoApp.getTodoId());
+        model.addAttribute("title", todoApp.getTitle());
+        model.addAttribute("detail", todoApp.getDetail());
+        return "edit";
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    String update(@ModelAttribute TodoApp todoApp, Model model) {
+        service.update(todoApp.getTodoId(),todoApp.getTitle(), todoApp.getDetail());
+        return "redirect:index";// 登録したらindexに移る
+    }
 }

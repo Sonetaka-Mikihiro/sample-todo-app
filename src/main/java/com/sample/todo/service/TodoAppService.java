@@ -27,11 +27,20 @@ public class TodoAppService {
     }
 
     public void register(String title, String detail) {
-        int nextId = dao.getNextId();
+        int nextId;
+        try{
+            nextId = dao.getNextId();
+        }catch(NullPointerException e){//レコードが0の時にgetNextIdがNullpointerExceptionを起こすため
+            nextId = 1;
+        }
         dao.insert(nextId, title, detail);
     }
 
     public void delete(int deleteId){
         dao.delete(deleteId);
+    }
+
+    public void update(int todoId, String title, String detail) {
+        dao.update(todoId, title, detail);
     }
 }

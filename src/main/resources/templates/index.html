@@ -20,6 +20,7 @@
                 <th>Title</th>
                 <th>Detail</th>
                 <th>Delete</th>
+                <th>Edit</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,14 @@
                     <form method="GET" action="./delete">
                         <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
                         <input class="button" type="submit" value="delete"></input>
+                    </form>
+                </td>
+                <td>
+                    <form method="GET" action="./edit">
+                        <input type="hidden" name="todoId" th:value="${result['todoId']}"></input>
+                        <input type="hidden" name="title" th:value="${result['title']}"></input>
+                        <input type="hidden" name="detail" th:value="${result['detail']}"></input>
+                        <input class="button" type="submit" value="edit"></input>
                     </form>
                 </td>
             </tr>
