@@ -44,6 +44,13 @@ public class TodoAppDao {
         MapSqlParameterSource paramMap = new MapSqlParameterSource();
         paramMap.addValue("deleteId", deleteId);
         jdbcTemplate.update("DELETE FROM TODO_APP WHERE TODO_ID = :deleteId", paramMap);
+    }
 
+    public void update(int todoId, String title, String detail){
+        MapSqlParameterSource paramMap = new MapSqlParameterSource();
+        paramMap.addValue("todoId", todoId);
+        paramMap.addValue("title", title);
+        paramMap.addValue("detail", detail);
+        jdbcTemplate.update("UPDATE TODO_APP SET TITLE = :title, DETAIL = :detail WHERE TODO_ID = :todoId", paramMap);
     }
 }
