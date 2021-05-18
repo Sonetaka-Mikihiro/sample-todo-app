@@ -35,7 +35,7 @@ public class TodoAppController {
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    String add(Model model) {
+    String add(@ModelAttribute TodoApp todoApp) {
         return "detail";
     }
 
@@ -44,7 +44,7 @@ public class TodoAppController {
         if (result.hasErrors()) { //入力チェック
             return "detail";
           }
-        service.register(todoApp.getTitle(), todoApp.getDetail());
+        service.register(todoApp.getCategory(),todoApp.getTitle(), todoApp.getDetail());
         return "redirect:index";// 登録したらindexに移る
     }
 
@@ -56,15 +56,35 @@ public class TodoAppController {
 
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     String edit(@ModelAttribute TodoApp todoApp, Model model) {
+        /**
+         * html側の記述方法を変えることでaddAttributeは不要になる。
+         * 完全には理解してないのでコメントアウトで一旦残しておく
         model.addAttribute("todoId", todoApp.getTodoId());
         model.addAttribute("title", todoApp.getTitle());
         model.addAttribute("detail", todoApp.getDetail());
+        */
         return "edit";
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
-    String update(@ModelAttribute TodoApp todoApp, Model model) {
-        service.update(todoApp.getTodoId(),todoApp.getTitle(), todoApp.getDetail());
+    String update(@ModelAttribute @Validated TodoApp todoApp, BindingResult result, Model model) {
+        if (result.hasErrors()) { //入力チェック
+            return "edit";
+          }
+        service.update(todoApp.getTodoId(),todoApp.getCategory(), todoApp.getTitle(), todoApp.getDetail());
         return "redirect:index";// 登録したらindexに移る
+    }
+
+    @RequestMapping(value =  "/trashbox", method = { RequestMethod.GET, RequestMethod.POST })
+    String trashBox(Model model) {
+        List<TodoApp> trashList = service.getTrashList();
+        model.addAttribute("trashList", trashList);// ここの"todoList"というキーがindex.htmlで参照されている
+        return "trashbox";// resources/index.htmlを指している
+    }
+
+    @RequestMapping(value = "/restore", method = RequestMethod.POST )
+    String restore(@ModelAttribute TodoApp todoApp, Model model) {
+        service.restore(todoApp.getDeleteId());
+        return "redirect:index";// resources/index.htmlを指している
     }
 }

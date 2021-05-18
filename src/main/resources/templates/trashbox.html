@@ -9,10 +9,9 @@
 </head>
 
 <body>
-    <h1>Todo List</h1>
+    <h1>Trash Box</h1>
     <div class="operation-area">
-        <button type="button" onclick="location.href='./new'">New Todo</button>
-        <button type="button" onclick="location.href='./trashbox'">Trash Box</button>
+        <button type="button" onclick="location.href='./index'">Todo List</button>
     </div>
     <table>
         <thead>
@@ -21,29 +20,20 @@
                 <th>Category</th>
                 <th>Title</th>
                 <th>Detail</th>
-                <th>Delete</th>
-                <th>Edit</th>
+                <th>Restore</th>
             </tr>
         </thead>
         <tbody>
-            <tr th:each="result : ${todoList}">
+            <tr th:each="result : ${trashList}">
                 <!--tymeleafの記述方法 -->
                 <td class="todo-id" th:text="${result['todoId']}"></td>
                 <td class="category" th:text="${result['category']}"></td>
                 <td class="title" th:text="${result['title']}"></td>
                 <td class="detail" th:text="${result['detail']}"></td>
                 <td>
-                    <form method="POST" action="./delete">
+                    <form method="POST" action="./restore">
                         <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
-                        <input class="button" type="submit" value="delete"></input>
-                    </form>
-                </td>
-                <td>
-                    <form method="GET" action="./edit">
-                        <input type="hidden" name="todoId" th:value="${result['todoId']}"></input>
-                        <input type="hidden" name="title" th:value="${result['title']}"></input>
-                        <input type="hidden" name="detail" th:value="${result['detail']}"></input>
-                        <input class="button" type="submit" value="edit"></input>
+                        <input class="button" type="submit" value="restore"></input>
                     </form>
                 </td>
             </tr>

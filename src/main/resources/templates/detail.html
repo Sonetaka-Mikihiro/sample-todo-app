@@ -11,15 +11,22 @@
 <body>
     <h1>New Todo</h1>
 
-    <form method="POST" action="./register">
+    <form method="POST" action="./register" th:object="${todoApp}">
         <ul>
             <li>
+                <label for="category">Category</label>
+                <input id="title" type="text" name="category"></input>
+                <span id="title-error" th:errors="*{category}"></span>
+            </li>
+            <li>
                 <label for="title">Title</label>
-                <input id="title" type="text" name = "title"></input>
+                <input id="title" type="text" name="title"></input>
+                <span id="title-error" th:errors="*{title}"></span>
             </li>
             <li>
                 <label for="detail">Detail</label>
                 <textarea id="detail" type="text" name="detail"></textarea>
+                <span id="detail-error" th:errors="*{detail}"></span>
             </li>
             <li><input class="button" type="submit" name="register" value="Register"></input></li>
         </ul>

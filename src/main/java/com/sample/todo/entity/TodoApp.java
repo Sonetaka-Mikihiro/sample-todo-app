@@ -15,11 +15,14 @@ public class TodoApp implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int todoId;
+    @Size(max=30)
+    private String category;
     @Size(min=1, max=30)
     private String title;
     @Size(max=100)
     private String detail;
     private int deleteId;
+    
 
     public TodoApp() {
     }
@@ -54,5 +57,13 @@ public class TodoApp implements Serializable {
 
     public int getDeleteId() {
         return deleteId;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

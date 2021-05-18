@@ -11,16 +11,23 @@
 <body>
     <h1>Edit Todo</h1>
 
-    <form method="POST" action="./update">
-        <input type="hidden" name="todoId" th:value="${todoId}"></input>
+    <form method="POST" action="./update" th:object="${todoApp}">
+        <input type="hidden" name="todoId" th:value="*{todoId}"></input>
         <ul>
             <li>
+                <label for="Category">Category</label>
+                <input id="category" type="text" name="category" th:value="*{category}"></input>
+                <span id="title-error" th:errors="*{category}"></span>
+            </li>
+            <li>
                 <label for="title">Title</label>
-                <input id="title" type="text" name="title" th:value="${title}"></input>
+                <input id="title" type="text" name="title" th:value="*{title}"></input>
+                <span id="title-error" th:errors="*{title}"></span>
             </li>
             <li>
                 <label for="detail">Detail</label>
-                <textarea id="detail" type="text" name="detail" th:text="${detail}"></textarea>
+                <textarea id="detail" type="text" name="detail" th:text="*{detail}"></textarea>
+                <span id="title-error" th:errors="*{detail}"></span>
             </li>
             <li><input class="button" type="submit" name="update" value="update"></input></li>
         </ul>
