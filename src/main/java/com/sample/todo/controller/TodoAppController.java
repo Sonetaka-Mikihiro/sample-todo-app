@@ -84,7 +84,7 @@ public class TodoAppController {
 
     @RequestMapping(value = "/restore", method = RequestMethod.POST )
     String restore(@ModelAttribute TodoApp todoApp, Model model) {
-        service.restore(todoApp.getDeleteId());
-        return "redirect:index";// resources/index.htmlを指している
+        service.restore(todoApp.getRestoreId());
+        return "redirect:trashbox";// resources/index.htmlを指している
     }
 }

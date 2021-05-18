@@ -62,9 +62,9 @@ public class TodoAppDao {
         return trashList;
     }
 
-    public void restore(int deleteId){
+    public void restore(int restoreId){
         MapSqlParameterSource paramMap = new MapSqlParameterSource();
-        paramMap.addValue("deleteId", deleteId);
-        jdbcTemplate.update("UPDATE TODO_APP SET DELETED_FLAG = 0 WHERE TODO_ID = :deleteId", paramMap);
+        paramMap.addValue("restoreId", restoreId);
+        jdbcTemplate.update("UPDATE TODO_APP SET DELETED_FLAG = 0 WHERE TODO_ID = :restoreId", paramMap);
     }
 }

@@ -22,6 +22,7 @@ public class TodoApp implements Serializable {
     @Size(max=100)
     private String detail;
     private int deleteId;
+    private int restoreId;
     
 
     public TodoApp() {
@@ -65,5 +66,13 @@ public class TodoApp implements Serializable {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getRestoreId() {
+        return restoreId;
+    }
+    
+    public void setRestoreId(int restoreId) {
+        this.restoreId = restoreId;
     }
 }

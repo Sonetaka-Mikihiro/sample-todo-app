@@ -48,7 +48,7 @@ public class TodoAppService {
         return dao.getTrashList();
     }
 
-    public void restore(int deleteId){
-        dao.restore(deleteId);
+    public void restore(int restoreId){
+        dao.restore(restoreId);
     }
 }

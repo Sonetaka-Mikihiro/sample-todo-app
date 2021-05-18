@@ -32,7 +32,7 @@
                 <td class="detail" th:text="${result['detail']}"></td>
                 <td>
                     <form method="POST" action="./restore">
-                        <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
+                        <input type="hidden" name="restoreId" th:value="${result['todoId']}"></input>
                         <input class="button" type="submit" value="restore"></input>
                     </form>
                 </td>
