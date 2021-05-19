@@ -9,21 +9,22 @@ import javax.validation.constraints.Size;
  * JavaBeansのルールに従っています。
  */
 public class TodoApp implements Serializable {
-    /**
-     * おまじない
-     */
+    /** おまじない */
     private static final long serialVersionUID = 1L;
 
     private int todoId;
-    @Size(max=30)
+
+    @Size(max = 30)
     private String category;
-    @Size(min=1, max=30)
+
+    @Size(min = 1, max = 30)
     private String title;
-    @Size(max=100)
+
+    @Size(max = 100)
     private String detail;
+
     private int deleteId;
     private int restoreId;
-    
 
     public TodoApp() {
     }
@@ -71,7 +72,7 @@ public class TodoApp implements Serializable {
     public int getRestoreId() {
         return restoreId;
     }
-    
+
     public void setRestoreId(int restoreId) {
         this.restoreId = restoreId;
     }

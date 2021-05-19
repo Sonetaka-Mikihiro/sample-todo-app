@@ -26,29 +26,29 @@ public class TodoAppService {
         return dao.getTodoAppList();
     }
 
-    public void register(String category,String title, String detail) {
+    public void register(String category, String title, String detail) {
         int nextId;
-        try{
+        try {
             nextId = dao.getNextId();
-        }catch(NullPointerException e){//レコードが0の時にgetNextIdがNullpointerExceptionを起こすため
+        } catch (NullPointerException e) {// レコードが0の時にgetNextIdがNullpointerExceptionを起こすため
             nextId = 1;
         }
         dao.insert(nextId, category, title, detail);
     }
 
-    public void delete(int deleteId){
+    public void delete(int deleteId) {
         dao.delete(deleteId);
     }
 
     public void update(int todoId, String category, String title, String detail) {
-        dao.update(todoId, category,title, detail);
+        dao.update(todoId, category, title, detail);
     }
 
-    public List<TodoApp> getTrashList(){
+    public List<TodoApp> getTrashList() {
         return dao.getTrashList();
     }
 
-    public void restore(int restoreId){
+    public void restore(int restoreId) {
         dao.restore(restoreId);
     }
 }
