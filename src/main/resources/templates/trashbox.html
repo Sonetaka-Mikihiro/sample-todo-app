@@ -20,6 +20,7 @@
                 <th>Category</th>
                 <th>Title</th>
                 <th>Detail</th>
+                <th>Deadline</th>
                 <th>Restore</th>
             </tr>
         </thead>
@@ -30,6 +31,7 @@
                 <td class="category" th:text="${result['category']}"></td>
                 <td class="title" th:text="${result['title']}"></td>
                 <td class="detail" th:text="${result['detail']}"></td>
+                <td class="deadline" th:text="${result['deadline']}"></td>
                 <td>
                     <form method="POST" action="./restore">
                         <input type="hidden" name="restoreId" th:value="${result['todoId']}"></input>

@@ -5,5 +5,6 @@ CREATE TABLE IF NOT EXISTS TODO_APP (
     CATEGORY varchar(30) NOT NULL,
     TITLE varchar(30) NOT NULL,
     DETAIL varchar(100) NOT NULL,
+    DEADLINE date,
     DELETED_FLAG bit
 );

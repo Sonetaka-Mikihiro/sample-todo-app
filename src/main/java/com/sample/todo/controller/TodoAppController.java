@@ -44,7 +44,7 @@ public class TodoAppController {
         if (result.hasErrors()) { // 入力チェック
             return "detail";
         }
-        service.register(todoApp.getCategory(), todoApp.getTitle(), todoApp.getDetail());
+        service.register(todoApp.getCategory(), todoApp.getTitle(), todoApp.getDetail(), todoApp.getDeadline());
         return "redirect:index";// 登録したらindexに移る
     }
 
@@ -85,5 +85,12 @@ public class TodoAppController {
     String restore(@ModelAttribute TodoApp todoApp, Model model) {
         service.restore(todoApp.getRestoreId());
         return "redirect:trashbox";// resources/index.htmlを指している
+    }
+
+    @RequestMapping(value = "/sort", method = RequestMethod.GET)
+    String sort(@ModelAttribute TodoApp todoApp, Model model) {
+        List<TodoApp> sortedList = service.sort(todoApp.getSortColumn(), todoApp.getSortType());
+        model.addAttribute("todoList", sortedList);
+        return "index";
     }
 }

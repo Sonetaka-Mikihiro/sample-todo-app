@@ -21,6 +21,21 @@
                 <th>Category</th>
                 <th>Title</th>
                 <th>Detail</th>
+                <th>Deadline
+                    <span>
+                        <form method="GET" action="./sort">
+                            <input type="hidden" name="sortColumn" value="DEADLINE"></input>
+                            <input type="hidden" name="sortType" value="ASC"></input>
+                            <button type="submit">↑</button>
+                        </form>
+                        <form method="GET" action="./sort">
+                            <input type="hidden" name="sortColumn" value="DEADLINE"></input>
+                            <input type="hidden" name="sortType" value="DESC"></input>
+                            <button type="submit">↓</button>
+                        </form>
+                    </span>
+                </th>
+
                 <th>Delete</th>
                 <th>Edit</th>
             </tr>
@@ -32,6 +47,7 @@
                 <td class="category" th:text="${result['category']}"></td>
                 <td class="title" th:text="${result['title']}"></td>
                 <td class="detail" th:text="${result['detail']}"></td>
+                <td class="deadline" th:text="${result['deadline']}"></td>
                 <td>
                     <form method="POST" action="./delete">
                         <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>

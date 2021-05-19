@@ -26,14 +26,14 @@ public class TodoAppService {
         return dao.getTodoAppList();
     }
 
-    public void register(String category, String title, String detail) {
+    public void register(String category, String title, String detail, java.sql.Date deadline) {
         int nextId;
         try {
             nextId = dao.getNextId();
         } catch (NullPointerException e) {// レコードが0の時にgetNextIdがNullpointerExceptionを起こすため
             nextId = 1;
         }
-        dao.insert(nextId, category, title, detail);
+        dao.insert(nextId, category, title, detail, deadline);
     }
 
     public void delete(int deleteId) {
@@ -50,5 +50,9 @@ public class TodoAppService {
 
     public void restore(int restoreId) {
         dao.restore(restoreId);
+    }
+
+    public List<TodoApp> sort(String sortColumn, String sortType) {
+        return dao.sort(sortColumn, sortType);
     }
 }

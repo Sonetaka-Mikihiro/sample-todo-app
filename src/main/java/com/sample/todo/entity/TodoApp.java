@@ -13,18 +13,17 @@ public class TodoApp implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private int todoId;
-
     @Size(max = 30)
     private String category;
-
     @Size(min = 1, max = 30)
     private String title;
-
     @Size(max = 100)
     private String detail;
-
     private int deleteId;
     private int restoreId;
+    private java.sql.Date deadline;
+    private String sortColumn;
+    private String sortType;
 
     public TodoApp() {
     }
@@ -75,5 +74,29 @@ public class TodoApp implements Serializable {
 
     public void setRestoreId(int restoreId) {
         this.restoreId = restoreId;
+    }
+
+    public java.sql.Date getDeadline() {
+        return deadline;
+    }
+
+    public void setDeadline(java.sql.Date deadline) {
+        this.deadline = deadline;
+    }
+
+    public String getSortColumn() {
+        return sortColumn;
+    }
+
+    public void setSortColumn(String sortColumn) {
+        this.sortColumn = sortColumn;
+    }
+
+    public String getSortType() {
+        return sortType;
+    }
+
+    public void setSortType(String sortType) {
+        this.sortType = sortType;
     }
 }
