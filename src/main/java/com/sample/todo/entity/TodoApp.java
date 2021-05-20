@@ -2,6 +2,7 @@ package com.sample.todo.entity;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 /**
@@ -22,7 +23,9 @@ public class TodoApp implements Serializable {
     private int deleteId;
     private int restoreId;
     private java.sql.Date deadline;
+    @Pattern(regexp = "TODO_ID|CATEGORY|TITLE|DETAIL|DEADLINE")
     private String sortColumn;
+    @Pattern(regexp = "ASC|DESC")
     private String sortType;
 
     public TodoApp() {

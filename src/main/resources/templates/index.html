@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="css/index.css" type="text/css" />
 </head>
 
-<body>
+<body th:object="${todoApp}">
     <h1>Todo List</h1>
+    <span th:if="${#fields.hasAnyErrors()}">不正な入力が行われました</span>
     <div class="operation-area">
         <button type="button" onclick="location.href='./new'">New Todo</button>
         <button type="button" onclick="location.href='./trashbox'">Trash Box</button>
@@ -17,10 +18,54 @@
     <table>
         <thead>
             <tr>
-                <th>#</th>
-                <th>Category</th>
-                <th>Title</th>
-                <th>Detail</th>
+                <th>#
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="TODO_ID"></input>
+                        <input type="hidden" name="sortType" value="ASC"></input>
+                        <button type="submit">↑</button>
+                    </form>
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="TODO_ID"></input>
+                        <input type="hidden" name="sortType" value="DESC"></input>
+                        <button type="submit">↓</button>
+                    </form>
+                </th>
+                <th>Category
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="CATEGORY"></input>
+                        <input type="hidden" name="sortType" value="ASC"></input>
+                        <button type="submit">↑</button>
+                    </form>
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="CATEGORY"></input>
+                        <input type="hidden" name="sortType" value="DESC"></input>
+                        <button type="submit">↓</button>
+                    </form>
+                </th>
+                <th>Title
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="TITLE"></input>
+                        <input type="hidden" name="sortType" value="ASC"></input>
+                        <button type="submit">↑</button>
+                    </form>
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="TITLE"></input>
+                        <input type="hidden" name="sortType" value="DESC"></input>
+                        <button type="submit">↓</button>
+                    </form>
+                </th>
+                <th>Detail
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="DETAIL"></input>
+                        <input type="hidden" name="sortType" value="ASC"></input>
+                        <button type="submit">↑</button>
+                    </form>
+                    <form method="GET" action="./sort">
+                        <input type="hidden" name="sortColumn" value="DETAIL"></input>
+                        <input type="hidden" name="sortType" value="DESC"></input>
+                        <button type="submit">↓</button>
+                    </form>
+                </th>
                 <th>Deadline
                     <span>
                         <form method="GET" action="./sort">
@@ -51,7 +96,13 @@
                 <td>
                     <form method="POST" action="./delete">
                         <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
-                        <input class="button" type="submit" value="delete"></input>
+                        <label>
+                            <span>delete</span>
+                            <input type="checkbox" name="checkbox"></input>
+                            <div id="popup">
+                                <h2>本当に消しますか？</h2>
+                            </div>
+                        </label>
                     </form>
                 </td>
                 <td>

@@ -28,14 +28,15 @@ public class TodoAppController {
      * POSTを許可しているのは、{@code #register(TodoApp, Model)} からredirectしてくるため
      */
     @RequestMapping(value = { "/", "index" }, method = { RequestMethod.GET, RequestMethod.POST })
-    String index(Model model) {
+    String index(TodoApp todoApp, Model model) {// @ModelAttributeや@Validatedは書かなくてもいいがTodoAppは引数として必要。謎。実験したらそうなった
         List<TodoApp> todoList = service.getTodoAppList();
         model.addAttribute("todoList", todoList);// ここの"todoList"というキーがindex.htmlで参照されている
         return "index";// resources/index.htmlを指している
     }
 
     @RequestMapping(value = "/new", method = RequestMethod.GET)
-    String add(@ModelAttribute TodoApp todoApp) {
+    String add(@ModelAttribute TodoApp todoApp, Model model) {
+        model.addAttribute("nextFriday", service.getNextFriday());
         return "detail";
     }
 
@@ -88,7 +89,12 @@ public class TodoAppController {
     }
 
     @RequestMapping(value = "/sort", method = RequestMethod.GET)
-    String sort(@ModelAttribute TodoApp todoApp, Model model) {
+    String sort(@ModelAttribute @Validated TodoApp todoApp, BindingResult result, Model model) {
+        if (result.hasErrors()) { // 入力チェック
+            List<TodoApp> todoList = service.getTodoAppList();
+            model.addAttribute("todoList", todoList);// ここの"todoList"というキーがindex.htmlで参照されている
+            return "index";// resources/index.htmlを指している
+        }
         List<TodoApp> sortedList = service.sort(todoApp.getSortColumn(), todoApp.getSortType());
         model.addAttribute("todoList", sortedList);
         return "index";
