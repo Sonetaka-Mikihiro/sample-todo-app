@@ -1,5 +1,19 @@
-h1 {
+#pageTitle {
     margin: 10px;
+    background-color: #151718;
+}
+
+p{
+    margin: 10px;
+}
+
+.sortbuttons li{
+    list-style: none;
+    float: left;
+}
+
+.columnName{
+    float: left;
 }
 
 table {
@@ -14,7 +28,7 @@ table, th, td {
 
 
 table td.todo-id {
-    width: 50px;
+    width: 150px;
     padding: 10px;
     text-align: center;
 }
@@ -56,10 +70,10 @@ input[type="checkbox"]:checked + #popup{
 
 /*popup表示させたいコンテンツのレイアウトと位置*/
 #popup{
-    width:10%;
-    line-height:100px;
+    width:20%;
+    line-height:50px;
     background:#000;
-    padding:0 4%;
+    padding:0 1%;
     box-sizing:border-box;
     display:none;
     position:fixed;

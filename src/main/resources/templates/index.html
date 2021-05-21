@@ -9,8 +9,8 @@
 </head>
 
 <body th:object="${todoApp}">
-    <h1>Todo List</h1>
-    <span th:if="${#fields.hasAnyErrors()}">不正な入力が行われました</span>
+    <h1><span id="pageTitle">Todo List</span></h1>
+    <p th:if="${#fields.hasAnyErrors()}">不正な入力が行われました</p>
     <div class="operation-area">
         <button type="button" onclick="location.href='./new'">New Todo</button>
         <button type="button" onclick="location.href='./trashbox'">Trash Box</button>
@@ -18,67 +18,96 @@
     <table>
         <thead>
             <tr>
-                <th>#
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="TODO_ID"></input>
-                        <input type="hidden" name="sortType" value="ASC"></input>
-                        <button type="submit">↑</button>
-                    </form>
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="TODO_ID"></input>
-                        <input type="hidden" name="sortType" value="DESC"></input>
-                        <button type="submit">↓</button>
-                    </form>
+                <th>
+                    #
+                    <ul class="sortbuttons">
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="TODO_ID"></input>
+                                <input type="hidden" name="sortType" value="ASC"></input>
+                                <button type="submit">↑</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="TODO_ID"></input>
+                                <input type="hidden" name="sortType" value="DESC"></input>
+                                <button type="submit">↓</button>
+                            </form>
+                        </li>
+                    </ul>
                 </th>
                 <th>Category
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="CATEGORY"></input>
-                        <input type="hidden" name="sortType" value="ASC"></input>
-                        <button type="submit">↑</button>
-                    </form>
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="CATEGORY"></input>
-                        <input type="hidden" name="sortType" value="DESC"></input>
-                        <button type="submit">↓</button>
-                    </form>
+                    <ul class="sortbuttons">
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="CATEGORY"></input>
+                                <input type="hidden" name="sortType" value="ASC"></input>
+                                <button type="submit">↑</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="CATEGORY"></input>
+                                <input type="hidden" name="sortType" value="DESC"></input>
+                                <button type="submit">↓</button>
+                            </form>
+                        </li>
+                    </ul>
                 </th>
                 <th>Title
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="TITLE"></input>
-                        <input type="hidden" name="sortType" value="ASC"></input>
-                        <button type="submit">↑</button>
-                    </form>
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="TITLE"></input>
-                        <input type="hidden" name="sortType" value="DESC"></input>
-                        <button type="submit">↓</button>
-                    </form>
+                    <ul class="sortbuttons">
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="TITLE"></input>
+                                <input type="hidden" name="sortType" value="ASC"></input>
+                                <button type="submit">↑</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="TITLE"></input>
+                                <input type="hidden" name="sortType" value="DESC"></input>
+                                <button type="submit">↓</button>
+                            </form>
+                        </li>
+                    </ul>
                 </th>
                 <th>Detail
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="DETAIL"></input>
-                        <input type="hidden" name="sortType" value="ASC"></input>
-                        <button type="submit">↑</button>
-                    </form>
-                    <form method="GET" action="./sort">
-                        <input type="hidden" name="sortColumn" value="DETAIL"></input>
-                        <input type="hidden" name="sortType" value="DESC"></input>
-                        <button type="submit">↓</button>
-                    </form>
+                    <ul class="sortbuttons">
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="DETAIL"></input>
+                                <input type="hidden" name="sortType" value="ASC"></input>
+                                <button type="submit">↑</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="DETAIL"></input>
+                                <input type="hidden" name="sortType" value="DESC"></input>
+                                <button type="submit">↓</button>
+                            </form>
+                        </li>
+                    </ul>
                 </th>
                 <th>Deadline
-                    <span>
-                        <form method="GET" action="./sort">
-                            <input type="hidden" name="sortColumn" value="DEADLINE"></input>
-                            <input type="hidden" name="sortType" value="ASC"></input>
-                            <button type="submit">↑</button>
-                        </form>
-                        <form method="GET" action="./sort">
-                            <input type="hidden" name="sortColumn" value="DEADLINE"></input>
-                            <input type="hidden" name="sortType" value="DESC"></input>
-                            <button type="submit">↓</button>
-                        </form>
-                    </span>
+                    <ul class="sortbuttons">
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="DEADLINE"></input>
+                                <input type="hidden" name="sortType" value="ASC"></input>
+                                <button type="submit">↑</button>
+                            </form>
+                        </li>
+                        <li>
+                            <form method="GET" action="./sort">
+                                <input type="hidden" name="sortColumn" value="DEADLINE"></input>
+                                <input type="hidden" name="sortType" value="DESC"></input>
+                                <button type="submit">↓</button>
+                            </form>
+                        </li>
+                    </ul>
                 </th>
 
                 <th>Delete</th>
@@ -94,20 +123,26 @@
                 <td class="detail" th:text="${result['detail']}"></td>
                 <td class="deadline" th:text="${result['deadline']}"></td>
                 <td>
-                    <form method="POST" action="./delete">
-                        <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
-                        <label>
-                            <span>delete</span>
-                            <input type="checkbox" name="checkbox"></input>
-                            <div id="popup">
-                                <h2>本当に消しますか？</h2>
-                            </div>
-                        </label>
-                    </form>
+                    <label>
+                        <span>delete</span>
+                        <input type="checkbox" name="checkbox"></input>
+                        <div id="popup">
+                            <h2>本当に消しますか？</h2>
+                            <form method="POST" action="./delete">
+                                <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
+                                <input class="button" type="submit" value="Yes"></input>
+                            </form>
+                            <form method="POST" action="./index">
+                                <input type="hidden" name="deleteId" th:value="${result['todoId']}"></input>
+                                <input class="button" type="submit" value="No"></input>
+                            </form>
+                        </div>
+                    </label>
                 </td>
                 <td>
                     <form method="GET" action="./edit">
                         <input type="hidden" name="todoId" th:value="${result['todoId']}"></input>
+                        <input type="hidden" name="category" th:value="${result['category']}"></input>
                         <input type="hidden" name="title" th:value="${result['title']}"></input>
                         <input type="hidden" name="detail" th:value="${result['detail']}"></input>
                         <input class="button" type="submit" value="edit"></input>
